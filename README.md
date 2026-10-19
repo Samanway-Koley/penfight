@@ -8,7 +8,7 @@
 
 Remember the back bench? The bell just rang, the teacher's gone, and two pens are standing upright on a scratched wooden desk. Pen Fight brings that duel online. Pull back, let go, and knock your rival's pen off the edge, either against a friend on the same device or against the computer.
 
-🔗 **Live demo:** [Take a seat at Table 03 →](https://samanway-koley.github.io/penfight/)
+🔗 **Live demo:** [Pen Fight](https://samanway-koley.github.io/penfight/)
 
 ![Status](https://img.shields.io/badge/status-live-brightgreen) ![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black) ![Build](https://img.shields.io/badge/build-none-lightgrey) ![Hosted on GitHub Pages](https://img.shields.io/badge/hosted%20on-GitHub%20Pages-222?logo=github)
 
