@@ -10,12 +10,17 @@ Remember the back bench? The bell just rang, the teacher's gone, and two pens ar
 
 🔗 **Live demo:** [Pen Fight](https://samanway-koley.github.io/penfight/)
 
-![Status](https://img.shields.io/badge/status-live-brightgreen) ![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black) ![Build](https://img.shields.io/badge/build-none-lightgrey) ![Hosted on GitHub Pages](https://img.shields.io/badge/hosted%20on-GitHub%20Pages-222?logo=github)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
 
 ---
 
 > *Room 302 · period 05 · after the bell*
 > *Two pens enter. One stays on the desk.*
+
+---
+
+<img width="2880" height="1924" alt="image" src="https://github.com/user-attachments/assets/366bf150-5d6c-4dd8-b635-5a2389483d54" />
+
 
 ## ✨ Features
 
