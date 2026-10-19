@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#caa26e" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Pen Fight" />
+  <title>Pen Fight Game Online | Classic School Desk Duel</title>
+  <meta name="description" content="Play Pen Fight online, the classic Indian school desk game. Choose a ball pen, gel grip or fountain pen, then flick against a friend or the computer." />
+  <meta name="author" content="Samanway Koley" />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <link rel="canonical" href="./" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Pen Fight" />
+  <meta property="og:title" content="Pen Fight Game Online | Classic School Desk Duel" />
+  <meta property="og:description" content="Play the classic Indian school desk game. Flick a pen against a friend or the computer." />
+  <meta property="og:url" content="./" />
+  <meta property="og:image" content="./logo.svg" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Pen Fight Game Online" />
+  <meta name="twitter:description" content="The classic school desk duel, rebuilt as a free online game." />
+  <meta name="twitter:image" content="./logo.svg" />
+  <link rel="icon" href="logo.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="logo.svg" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Nunito+Sans:wght@400;600;700;800;900&family=Patrick+Hand&family=Schoolbell&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Pen Fight",
+    "description": "Play the classic Indian school desk pen fight game online against a friend or computer opponent.",
+    "applicationCategory": "GameApplication",
+    "operatingSystem": "Any",
+    "browserRequirements": "Requires JavaScript and an HTML5 canvas",
+    "author": { "@type": "Person", "name": "Samanway Koley" },
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="shell header-inner">
+    <a class="brand" href="#" aria-label="Pen Fight — home">
+      <span class="brand-mark" aria-hidden="true">
+        <img src="logo.svg" alt="" width="40" height="40" decoding="async" />
+      </span>
+      <span class="brand-text">
+        <span class="brand-title">Pen Fight</span>
+        <span class="brand-sub">after-school edition</span>
+      </span>
+    </a>
+    <div class="header-center" aria-hidden="true">
+      <span class="rule"></span>
+      <p class="header-tagline">the best five minutes of the school day</p>
+      <span class="rule"></span>
+    </div>
+    <div class="header-actions">
+      <button class="icon-btn" id="soundBtn" type="button" aria-label="Mute sound" aria-pressed="false" title="Toggle sound">
+        <svg class="icon icon-sound-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6.5 8.5H3v7h3.5L11 19V5Z"/><path d="M15 9a4 4 0 0 1 0 6M17.5 6.5a7.5 7.5 0 0 1 0 11"/></svg>
+        <svg class="icon icon-sound-off hidden" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6.5 8.5H3v7h3.5L11 19V5Z"/><path d="m15.5 9.5 5 5M20.5 9.5l-5 5"/></svg>
+      </button>
+      <button class="btn btn-ghost btn-small header-rules" id="rulesBtn" type="button" aria-label="How to play" title="How to play">
+        <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.7 9.1a2.4 2.4 0 1 1 3.8 2c-.9.6-1.5 1.1-1.5 2.1M12 16.8h.01"/></svg>
+        <span>How to play</span>
+      </button>
+      <button class="btn btn-primary btn-small" id="headerStartBtn" type="button" aria-label="Start the match" title="Start the match">
+        <span id="headerStartLabel">Start a duel</span>
+        <span class="arrow-disc" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+  <div class="shell">
+    <div class="page-heading">
+      <div>
+        <p class="eyebrow"><span class="eyebrow-line"></span> Room 302 · period 05 <span class="eyebrow-line soft"></span> <span id="headingMode">solo vs computer · medium</span></p>
+        <h1 class="page-title">Back-bench <em>champions.</em></h1>
+      </div>
+      <div class="heading-side">
+        <span class="school-chip"><i class="dot"></i> Schoolyard classic <span>· after the bell</span></span>
+        <p class="heading-note">
+          <svg viewBox="0 0 34 22" aria-hidden="true"><path d="M2 15c7-12 23-13 28-3M27 9l3 3-4 2"/></svg>
+          <span id="headingSeries">best of 3 — first to 2</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="game-layout">
+      <section class="board-column" id="boardColumn" aria-label="Pen Fight game board">
+        <div class="arena-card">
+          <div class="arena-topbar">
+            <div class="table-meta">
+              <span class="table-dot" aria-hidden="true"></span>
+              <div>
+                <div class="table-name">Table 03</div>
+                <div class="table-sub" id="tableSub">ready for a rematch</div>
+              </div>
+            </div>
+            <div class="turn-chip" id="turnChip" aria-live="polite">
+              <span class="turn-dot" id="turnDot">1</span>
+              <span id="turnText">Table ready</span>
+              <span class="thinking-dots hidden" id="thinkingDots" aria-hidden="true"><i></i><i></i><i></i></span>
+            </div>
+            <div class="arena-metrics">
+              <div class="metric">
+                <span class="metric-label">Series</span>
+                <span class="metric-value"><span id="score1">0</span><i class="score-sep">:</i><span id="score2">0</span></span>
+              </div>
+              <div class="metric">
+                <span class="metric-label">Round clock</span>
+                <span class="metric-value" id="roundClock">00:00</span>
+              </div>
+              <div class="series-badge"><span>Series</span><b id="seriesBadge">Best of 3</b></div>
+            </div>
+          </div>
+
+          <div class="canvas-shell" id="canvasShell">
+            <span class="tape left" aria-hidden="true"></span>
+            <span class="tape right" aria-hidden="true"></span>
+            <canvas id="gameCanvas" aria-label="Wooden desk arena with two pens standing upright" role="img"></canvas>
+            <span class="canvas-ribbon"><i class="dot"></i><span id="canvasModeLabel">Table 03 · preview</span></span>
+            <div class="canvas-note" id="canvasNote">
+              <span class="note-num">01</span>
+              <div>
+                <strong>Pull back, then let go.</strong>
+                <span>Short pull = gentle tap. Long pull = risky power shot.</span>
+              </div>
+            </div>
+            <div class="toast" id="toast" role="status" aria-live="polite"></div>
+            <div class="round-overlay hidden" id="roundOverlay">
+              <div class="result-card" role="dialog" aria-modal="true" aria-labelledby="resultTitle">
+                <p class="result-kicker" id="resultKicker">Round 01 · out of bounds</p>
+                <h2 class="result-title" id="resultTitle">Player 2 takes it.</h2>
+                <p class="result-desc" id="resultDesc">A clean hit toward the edge. The desk has spoken.</p>
+                <div class="result-scoreline" id="resultScoreline"></div>
+                <button class="btn btn-primary btn-block" id="nextRoundBtn" type="button">Next round <span class="arrow-disc" aria-hidden="true"><svg class="icon" style="width:12px;height:12px" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></button>
+              </div>
+            </div>
+          </div>
+
+          <div class="arena-footer">
+            <div class="turn-hint">
+              <span class="beacon" id="beacon">1</span>
+              <div class="hint-copy">
+                <p class="hint-title" id="hintTitle">Your desk is ready.</p>
+                <p class="hint-sub" id="hintSub">Pick your pens in match setup, then start.</p>
+              </div>
+            </div>
+            <div class="power-wrap">
+              <div class="power-head"><span class="power-label">Flick power</span><span class="power-read" id="powerRead">0%</span></div>
+              <div class="power-track"><div class="power-fill" id="powerFill"></div></div>
+            </div>
+            <div class="power-hint">
+              <strong>Flick</strong>
+              <span>back &amp; release</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="under-board-note">
+          <p><i class="ink-swatch"></i> Wooden desk · chalk dust · no bad shots, only lessons.</p>
+          <p class="hand">two pens enter. one stays on the desk.</p>
+        </div>
+      </section>
+
+      <aside class="sidebar" id="sidebar" aria-label="Match setup and score">
+        <section class="panel setup-panel" id="setupPanel">
+          <div class="panel-head">
+            <div>
+              <p class="panel-kicker">Before the bell</p>
+              <h2 class="panel-title">Match <em>setup</em></h2>
+            </div>
+            <span class="scribble-tag">your call</span>
+          </div>
+
+          <div class="field">
+            <div class="field-label"><span>Match mode</span><span class="field-note">pick a side</span></div>
+            <div class="segmented" id="modeGroup" role="group" aria-label="Match mode">
+              <button class="segment" data-mode="local" type="button" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8.5" cy="8" r="2.7"/><path d="M3.8 18c.3-3.1 2.1-4.8 4.7-4.8s4.4 1.7 4.7 4.8"/><circle cx="16.2" cy="8.7" r="2.2"/><path d="M15.8 13.2c2.5 0 4.1 1.6 4.4 4.3"/></svg>
+                <span><strong>Pass &amp; play</strong><small>two humans</small></span>
+              </button>
+              <button class="segment active" data-mode="ai" type="button" aria-pressed="true">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="7" width="14" height="11" rx="3"/><path d="M12 7V4M9 12h.01M15 12h.01M9.2 15.2c1.8 1.2 3.8 1.2 5.6 0"/></svg>
+                <span><strong>vs Computer</strong><small>solo practice</small></span>
+              </button>
+            </div>
+            <div class="difficulty-wrap" id="difficultyWrap">
+              <div class="field-label"><span>Bot difficulty</span><span class="field-note">how sweaty?</span></div>
+              <div class="chip-row" id="difficultyGroup" role="group" aria-label="Computer difficulty">
+                <button class="mini-chip" data-difficulty="easy" type="button">Easy</button>
+                <button class="mini-chip active" data-difficulty="medium" type="button">Medium</button>
+                <button class="mini-chip" data-difficulty="hard" type="button">Hard</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="field-label"><span>Choose your pens</span><span class="field-note">tap a player to change</span></div>
+            <div class="player-tabs" role="group" aria-label="Player being customised">
+              <button class="player-tab active" id="p1Tab" data-player="0" type="button" aria-pressed="true">
+                <i class="subject-swatch" id="p1TabSwatch"></i><span id="p1TabLabel">You</span><i class="tab-num">P1</i>
+              </button>
+              <button class="player-tab" id="p2Tab" data-player="1" type="button" aria-pressed="false">
+                <i class="subject-swatch" id="p2TabSwatch"></i><span id="p2TabLabel">Computer</span><i class="tab-num" id="p2TabNum">AI</i>
+              </button>
+            </div>
+
+            <div class="pen-options" id="penOptions" role="group" aria-label="Pen type">
+              <button class="pen-option" data-profile="speed" type="button" aria-pressed="false">
+                <svg class="pen-preview pv-ball" viewBox="0 0 92 18" aria-hidden="true">
+                  <rect class="dark" x="1" y="6" width="7" height="6" rx="2"/>
+                  <rect class="barrel" x="7" y="4.5" width="56" height="9" rx="4.5"/>
+                  <rect class="dark" x="13" y="2.2" width="26" height="2.2" rx="1.1"/>
+                  <rect class="window" x="36" y="6.6" width="18" height="4.8" rx="2.4"/>
+                  <rect class="ink" x="38.5" y="8.2" width="13" height="1.6" rx="0.8"/>
+                  <path class="metal" d="M62 5 L79 7.6 Q82 9 79 10.4 L62 13 Z"/>
+                  <circle class="ball" cx="82.4" cy="9" r="1.5"/>
+                  <path class="shine" d="M12 6.3 H56"/>
+                </svg>
+                <span class="pen-option-name">Ball Pen</span>
+                <span class="pen-option-alias">Reynolds 045 style</span>
+                <span class="pen-option-desc">Fast slide · light hit</span>
+                <span class="pen-stats"><span><i>SPD</i><b>5</b></span><span><i>HIT</i><b>2</b></span><span><i>GRIP</i><b>3</b></span></span>
+              </button>
+
+              <button class="pen-option active" data-profile="balanced" type="button" aria-pressed="true">
+                <svg class="pen-preview pv-gel" viewBox="0 0 92 18" aria-hidden="true">
+                  <rect class="cap" x="2" y="4" width="21" height="10" rx="4"/>
+                  <rect class="dark" x="6" y="2.2" width="19" height="2.2" rx="1.1"/>
+                  <rect class="barrel" x="21" y="4.8" width="38" height="8.4" rx="4.2"/>
+                  <rect class="ink" x="25" y="7.8" width="42" height="2.4" rx="1.2"/>
+                  <rect class="grip" x="55" y="4.4" width="18" height="9.2" rx="4.6"/>
+                  <path class="grooves" d="M59 5.6 V12.4 M63.5 5.6 V12.4 M68 5.6 V12.4"/>
+                  <path class="metal" d="M72 5 L84 7.6 Q87 9 84 10.4 L72 13 Z"/>
+                  <circle class="ball" cx="87.4" cy="9" r="1.45"/>
+                  <path class="shine" d="M25 6.4 H50"/>
+                </svg>
+                <span class="pen-option-name">Gel Grip</span>
+                <span class="pen-option-alias">Cello Gripper style</span>
+                <span class="pen-option-desc">Steady slide · all-rounder</span>
+                <span class="pen-stats"><span><i>SPD</i><b>3</b></span><span><i>HIT</i><b>3</b></span><span><i>GRIP</i><b>5</b></span></span>
+              </button>
+
+              <button class="pen-option" data-profile="heavy" type="button" aria-pressed="false">
+                <svg class="pen-preview pv-fountain" viewBox="0 0 92 18" aria-hidden="true">
+                  <rect class="cap" x="2" y="3.2" width="25" height="11.6" rx="5"/>
+                  <rect class="gold" x="7" y="1.6" width="19" height="2.3" rx="1.15"/>
+                  <rect class="gold" x="26" y="3.6" width="3.4" height="10.8"/>
+                  <rect class="barrel" x="29" y="3.9" width="31" height="10.2" rx="5"/>
+                  <path class="section" d="M59 5 L69 6.4 V11.6 L59 13 Z"/>
+                  <path class="nib" d="M68.5 5.2 C75 5.6 81 6.9 85.5 9 C81 11.1 75 12.4 68.5 12.8 C70.4 10.3 70.4 7.7 68.5 5.2 Z"/>
+                  <path class="slit" d="M72.5 9 H82.5"/>
+                  <circle class="hole" cx="74" cy="9" r="1"/>
+                  <path class="shine" d="M33 5.8 H56"/>
+                </svg>
+                <span class="pen-option-name">Fountain</span>
+                <span class="pen-option-alias">Parker style</span>
+                <span class="pen-option-desc">Short slide · heavy hit</span>
+                <span class="pen-stats"><span><i>SPD</i><b>2</b></span><span><i>HIT</i><b>5</b></span><span><i>GRIP</i><b>3</b></span></span>
+              </button>
+            </div>
+
+            <p class="pen-feature" id="penFeature"></p>
+
+            <div class="color-line">
+              <span class="color-label" id="colorLabel">Pen colour · P1</span>
+              <div class="swatches" id="colorSwatches" role="group" aria-label="Pen colour"></div>
+            </div>
+          </div>
+
+          <div class="series-row">
+            <div class="series-copy">
+              <span class="series-label">Series length</span>
+              <span class="series-note" id="seriesNote">first to two wins</span>
+            </div>
+            <div class="series-select" id="seriesGroup" role="group" aria-label="Series length">
+              <button class="active" data-series="3" type="button">Best of 3</button>
+              <button data-series="5" type="button">Best of 5</button>
+            </div>
+          </div>
+
+          <button class="btn btn-primary btn-block start-btn" id="startMatchBtn" type="button">
+            <span>Start the match</span>
+            <span class="arrow-disc" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
+          </button>
+          <p class="start-note">First to <b id="targetWinsLabel">2</b> rounds. Pens start upright, break alternates, <b>no mercy</b>.</p>
+        </section>
+
+        <section class="panel live-panel hidden" id="livePanel">
+          <div class="live-head">
+            <div>
+              <p class="panel-kicker">The scorecard</p>
+              <h2 class="panel-title">Room <em>302</em></h2>
+            </div>
+            <span class="live-pill"><i></i> live</span>
+          </div>
+          <p class="live-mode" id="liveMode">vs computer · <b>medium mode</b></p>
+          <div class="scorecards">
+            <div class="live-score-card is-active" id="liveCard1">
+              <span class="subject-swatch" id="liveS1">1</span>
+              <div class="live-player"><strong id="liveName1">You</strong><span id="liveProfile1"></span><div class="win-pips" id="pips1"></div></div>
+              <div class="live-side"><span class="live-tag" id="liveTag1">to shoot</span><div class="live-score" id="liveScore1">0</div></div>
+            </div>
+            <div class="live-score-card" id="liveCard2">
+              <span class="subject-swatch" id="liveS2">2</span>
+              <div class="live-player"><strong id="liveName2">Computer</strong><span id="liveProfile2"></span><div class="win-pips" id="pips2"></div></div>
+              <div class="live-side"><span class="live-tag" id="liveTag2">waiting</span><div class="live-score" id="liveScore2">0</div></div>
+            </div>
+          </div>
+          <div class="live-round-row">
+            <span>Round <b id="liveRound">1</b> <span id="liveSeriesLabel">of 3</span></span>
+            <div class="round-pips" id="roundPips" aria-label="Round history"></div>
+          </div>
+          <div class="live-actions">
+            <button class="btn btn-ghost" id="liveRestartBtn" type="button"><svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10a8 8 0 1 1 2.3 6.7M4 4v6h6"/></svg> Restart</button>
+            <button class="btn btn-ghost" id="changePensBtn" type="button"><svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="m4 20 4.2-1 10-10a2.1 2.1 0 0 0-3-3l-10 10L4 20Z"/><path d="m13.8 7.4 2.8 2.8"/></svg> Change pens</button>
+          </div>
+          <p class="match-tip"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M8.5 14.5A6 6 0 1 1 15.5 14.5c-.9.8-1.5 1.6-1.5 2.5h-4c0-.9-.6-1.7-1.5-2.5Z"/></svg> Work your rival toward an edge over a few turns — one centre hit should not finish it.</p>
+        </section>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <div class="footer-left">
+      <span class="footer-mark" aria-hidden="true"><img src="logo.svg" alt="" decoding="async" /></span>
+      <span>&copy; 2026 Pen Fight</span>
+    </div>
+    <p class="footer-center">Developed by <a href="https://github.com/Samanway-Koley" target="_blank" rel="noopener noreferrer">Samanway Koley</a></p>
+    <div class="footer-right">
+      <a class="social-btn" href="mailto:samanway.koley@gmail.com" aria-label="Email Samanway Koley" title="Email">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 7 8.5 6 8.5-6"/></svg>
+      </a>
+      <a class="social-btn" href="https://www.linkedin.com/in/samanway-koley" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn — Samanway Koley" title="LinkedIn">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path class="icon-fill" d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.75V21h-4v-5.6c0-1.34-.03-3.06-1.9-3.06-1.9 0-2.19 1.45-2.19 2.96V21h-4V9Z"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<div class="modal-backdrop hidden" id="rulesModal" role="dialog" aria-modal="true" aria-labelledby="rulesTitle">
+  <div class="modal-card">
+    <button class="modal-close" type="button" data-close-rules aria-label="Close rules">
+      <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+    <p class="modal-kicker">The official(ish) rulebook</p>
+    <h2 class="modal-title" id="rulesTitle">How to win a <em>pen fight.</em></h2>
+    <p class="modal-sub">Two pens. One desk. The last pen still on the wood takes the round. It is simple — right up until someone aims for the edge.</p>
+    <ol class="rule-list">
+      <li class="rule-item">
+        <span class="rule-num">01</span>
+        <div><h3>Pull back from your pen</h3><p>Press on your own pen and drag away from your target, then release. Force builds gradually: a short pull is a gentle tap, and only a long pull into the red is a full-strength shot.</p></div>
+      </li>
+      <li class="rule-item">
+        <span class="rule-num">02</span>
+        <div><h3>Work it toward the edge</h3><p>Hit off-centre to add spin. Ball pens slide far but hit lightly, gel grips stay predictable, and fountain pens hit hardest. The next turn unlocks only when both pens stop.</p></div>
+      </li>
+      <li class="rule-item">
+        <span class="rule-num">03</span>
+        <div><h3>Stay on the desk</h3><p>A pen falls when its centre crosses the desk edge. Flicking yourself off without touching your rival is a foul. If both pens fall, the one that fell later loses; a dead tie is a draw and the round is replayed.</p></div>
+      </li>
+    </ol>
+    <div class="rule-tip"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 14.3 9l6 .5-4.6 4 1.4 5.9L12 16.2l-5.1 3.2 1.4-5.9-4.6-4 6-.5L12 3.5Z"/></svg><span><b>Desk rule:</b> first to 2 rounds wins a best-of-3, first to 3 wins a best-of-5. The opening break alternates every round.</span></div>
+    <div class="modal-actions">
+      <button class="btn btn-primary" type="button" data-close-rules>Got it, let’s flick <span class="arrow-disc" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></button>
+      <span class="rule-foot-note">pens before phones.</span>
+    </div>
+  </div>
+</div>
+
+<div class="modal-backdrop hidden" id="gameOverModal" role="dialog" aria-modal="true" aria-labelledby="goTitle">
+  <div class="modal-card gameover-card">
+    <div class="confetti-layer" id="confettiLayer" aria-hidden="true"></div>
+    <div class="go-pen-stage" id="goPenWrap" aria-hidden="true">
+      <svg class="victory-pen pen-preview pv-gel" viewBox="0 0 92 18">
+        <rect class="cap" x="2" y="4" width="21" height="10" rx="4"/>
+        <rect class="dark" x="6" y="2.2" width="19" height="2.2" rx="1.1"/>
+        <rect class="barrel" x="21" y="4.8" width="38" height="8.4" rx="4.2"/>
+        <rect class="ink" x="25" y="7.8" width="42" height="2.4" rx="1.2"/>
+        <rect class="grip" x="55" y="4.4" width="18" height="9.2" rx="4.6"/>
+        <path class="grooves" d="M59 5.6 V12.4 M63.5 5.6 V12.4 M68 5.6 V12.4"/>
+        <path class="metal" d="M72 5 L84 7.6 Q87 9 84 10.4 L72 13 Z"/>
+        <circle class="ball" cx="87.4" cy="9" r="1.45"/>
+        <path class="shine" d="M25 6.4 H50"/>
+      </svg>
+    </div>
+    <p class="go-kicker" id="goKicker">The final bell</p>
+    <h2 class="go-title" id="goTitle">You <em>win.</em></h2>
+    <p class="go-desc" id="goDesc">A tidy little clinic in desk warfare.</p>
+    <div class="final-score">
+      <div class="final-player"><strong id="finalName1">You</strong><span id="finalPen1"></span></div>
+      <div class="final-big"><span id="finalScore1">2</span><i>—</i><span id="finalScore2">0</span></div>
+      <div class="final-player"><strong id="finalName2">Computer</strong><span id="finalPen2"></span></div>
+    </div>
+    <div class="final-pens"><span><i id="finalDot1"></i> First to <b id="finalTarget">2</b></span><span><i id="finalDot2"></i> series complete</span></div>
+    <div class="go-stats"><span><b id="goRounds">0</b> rounds</span><span><b id="goClacks">0</b> good clacks</span><span><b id="goFalls">0</b> desk drops</span></div>
+    <div class="modal-actions">
+      <button class="btn btn-primary" id="playAgainBtn" type="button"><svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10a8 8 0 1 1 2.3 6.7M4 4v6h6"/></svg> Rematch</button>
+      <button class="btn btn-ghost" id="changePensAfterBtn" type="button">Change pens</button>
+    </div>
+    <p class="modal-note-hand">same desk, same rules. different result?</p>
+  </div>
+</div>
+</body>
+</html>

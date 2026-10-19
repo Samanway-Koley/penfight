@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://samanway-koley.github.io/penfight/sitemap.xml
